@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NYPD Dispatch: 911 Operator</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.7.1/leaflet.css" />
+</head>
+<body>
+   <!-- Login Screen -->
+<div class="login-screen" id="loginScreen">
+    <h2>NYPD Dispatch System</h2>
+    <h3>Manhattan South Communications</h3>
+    <form id="loginForm">
+        <input type="text" id="operatorId" placeholder="NYPD Operator ID" required>
+        <input type="password" id="password" placeholder="Password" required>
+        <button type="submit">Login</button>
+        <div id="errorMessage" class="error-message">
+            Unauthorized access. Please check credentials.
+        </div>
+    </form>
+    <p style="margin-top: 15px; font-size: 0.9em; color: #888;">
+        Authorized NYPD Personnel Only
+    </p>
+</div>
+
+    <!-- Register Screen -->
+    <div class="register-screen" id="registerScreen">
+        <h2>New Operator Registration</h2>
+        <form id="registerForm">
+            <input type="text" id="newOperatorId" placeholder="Choose Operator ID" required>
+            <input type="text" id="fullName" placeholder="Full Name" required>
+            <input type="password" id="newPassword" placeholder="Choose Password" required>
+            <input type="password" id="confirmPassword" placeholder="Confirm Password" required>
+            <button type="submit">Register</button>
+        </form>
+        <p>
+            <a href="#" id="loginLink">Back to Login</a>
+        </p>
+    </div>
+
+    <!-- Desktop -->
+    <div class="desktop" id="desktop">
+        <div class="desktop-icons">
+            <div class="icon" onclick="openWindow('calls')">
+                <img src="/api/placeholder/48/48" alt="Calls">
+                <span>911 Calls</span>
+            </div>
+            <div class="icon" onclick="openWindow('units')">
+                <img src="/api/placeholder/48/48" alt="Units">
+                <span>Unit Dispatch</span>
+            </div>
+            <div class="icon" onclick="openWindow('status')">
+                <img src="/api/placeholder/48/48" alt="Status">
+                <span>Operator Status</span>
+            </div>
+            <div class="icon" onclick="openWindow('stats')">
+                <img src="/api/placeholder/48/48" alt="Stats">
+                <span>Performance Stats</span>
+            </div>
+            <div class="icon" onclick="openFile('readme')">
+                <img src="/api/placeholder/48/48" alt="README">
+                <span>readme.txt</span>
+            </div>
+        </div>
+
+        <!-- Windows -->
+        <div class="window" id="callsWindow">
+            <div class="window-header">
+                <span>Active 911 Calls</span>
+                <button onclick="closeWindow('calls')">×</button>
+            </div>
+            <div class="window-content">
+                <div id="activeCalls"></div>
+                <div id="callDetails"></div>
+            </div>
+        </div>
+
+        <div class="window" id="unitsWindow">
+            <div class="window-header">
+                <span>Unit Dispatch</span>
+                <button onclick="closeWindow('units')">×</button>
+            </div>
+            <div class="window-content">
+                <div id="map"></div>
+                <div id="unitList"></div>
+            </div>
+        </div>
+
+        <div class="window" id="statsWindow">
+            <div class="window-header">
+                <span>Performance Statistics</span>
+                <button onclick="closeWindow('stats')">×</button>
+            </div>
+            <div class="window-content">
+                <div id="performanceStats"></div>
+            </div>
+        </div>
+
+        <div class="window" id="readmeWindow">
+            <div class="window-header">
+                <span>readme.txt</span>
+                <button onclick="closeWindow('readme')">×</button>
+            </div>
+            <div class="window-content">
+                <div id="readmeContent"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Status Bar -->
+    <div class="status-bar">
+        <div id="currentTime"></div>
+        <div id="operatorInfo"></div>
+        <div id="activeIncidents"></div>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.7.1/leaflet.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
